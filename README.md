@@ -45,7 +45,6 @@ Following options are available in the settings array of the constructor:
 | `BOOTSTRAP_PATH` | Path to your bootstrap.php in the root folder of your OXID eSales installation. | String | '' | Yes |
 | `SEPERATOR` | Seperator that will be used to split the collected category names. | String | ', ' | Yes |
 | `GIVEN_TOKEN` | If you want to verify the access to the class by a token, you can parse it here. | String | '' | No |
-
 | `ACCESS_TOKEN` | If you want to verify the access to the class by a token, parse the default token here. | String | false | No |
 
 To start the whole process:
@@ -67,7 +66,6 @@ Following options are available in the settings array of the function:
 | `CAT_ID` | The category OXID that will be searched. | String | '' | Yes |
 | `ATTR_ID` | The attribute OXID that will be filled with all the category names of 'CAT_ID'. | String | '' | Yes |
 | `LOG` | If true each article will be saved in a csv file. | boolean | true | Yes |
-
 | `CLEAN_DB` | If true all filled attributes with OXID 'ATTR_ID' will be dumped before insertation. | Boolean | true | No |
 | `SEARCH_MODE` | If 0 the search query will only search for direct child categorys of 'CAT_ID'. If 1 the search query will search for the deepest child available. If 2 the search query will simply select all childs and childs of the childs and so on. | Integer | 0 | Yes |
 
@@ -100,7 +98,6 @@ The API can be customized by following GET params:
 | `catId` | The category OXID that will be searched. | String | false | Yes |
 | `attrId` | The attribute OXID that will be filled with all the category names of 'catId '. | String | false | Yes |
 | `confirm` | If true, a table will be displayed will all articles and categorys without actually inserting them. So you have the abilty to confirm it. If false, it will be inserted instantly. | boolean | false | No |
-
 | `log` | If true, the request and all changed articles will be logged in a csv file. | boolean | true | No |
 | `token` |  If you want to verify the access to the class by a token, parse the default here. | string | false | No |
 | `cleanDb` |  If true all filled attributes with OXID 'ATTR_ID' will be dumped before insertion. | boolean | true | No |
