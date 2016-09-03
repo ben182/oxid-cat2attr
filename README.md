@@ -41,8 +41,7 @@ $oCat2attr = new cat2attr(array(
 Following options are available in the settings array of the constructor:
 
 | Name | Description | Type | Default | Required |
-|---|---|---|---|---|
-
+|------|-------------|------|---------|----------|
 | `BOOTSTRAP_PATH` | Path to your bootstrap.php in the root folder of your OXID eSales installation. | String | '' | Yes |
 | `SEPERATOR` | Seperator that will be used to split the collected category names. | String | ', ' | Yes |
 | `GIVEN_TOKEN` | If you want to verify the access to the class by a token, you can parse it here. | String | '' | No |
@@ -64,8 +63,7 @@ $cat2attr->insert(array(
 Following options are available in the settings array of the function:
 
 | Name | Description | Type | Default | Required |
-|---|---|---|---|---|
-
+|------|-------------|------|---------|----------|
 | `CAT_ID` | The category OXID that will be searched. | String | '' | Yes |
 | `ATTR_ID` | The attribute OXID that will be filled with all the category names of 'CAT_ID'. | String | '' | Yes |
 | `LOG` | If true each article will be saved in a csv file. | boolean | true | Yes |
@@ -98,8 +96,7 @@ The project comes with a build in API. It is located in the index file of the ro
 The API can be customized by following GET params:
 
 | Name | Description | Type | Default | Required |
-|---|---|---|---|---|
-
+|------|-------------|------|---------|----------|
 | `catId` | The category OXID that will be searched. | String | false | Yes |
 | `attrId` | The attribute OXID that will be filled with all the category names of 'catId '. | String | false | Yes |
 | `confirm` | If true, a table will be displayed will all articles and categorys without actually inserting them. So you have the abilty to confirm it. If false, it will be inserted instantly. | boolean | false | No |
