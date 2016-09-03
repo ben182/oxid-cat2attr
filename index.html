@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>oxid-cat2attr by ben182</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github.css" media="screen">
+    <style>
+      .page-header {
+        background: #56ab2f; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #56ab2f , #a8e063); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #56ab2f , #a8e063); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+      }
+      .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
+          color: #56ab2f;
+      }
+      a {
+          color: #56ab2f;
+      }
+      pre {
+        display: flex;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">oxid-cat2attr</h1>
+      <h2 class="project-tagline">oxid-cat2attr is a simple PHP class for OXID eSales, that will transfer category assigned articles into an attribute.</h2>
+      <a href="https://github.com/ben182/oxid-cat2attr" class="btn">View on GitHub</a>
+      <a href="https://github.com/ben182/oxid-cat2attr/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/ben182/oxid-cat2attr/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p>oxid-cat2attr is a simple PHP class for OXID eSales, that will transfer category assigned articles into an attribute.</p>
+
+      <h3><a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
+
+      <img src="images/1.jpg" alt="">
+
+      <p>You have the article 'Testarticle2' assigned to SubChild1.</p>
+
+      <img src="images/2.jpg" alt="">
+
+      <p>The PHP script will fill a specific attribute in that article with the name of the category.</p>
+      <p>Result:</p>
+      
+      <img src="images/3.jpg" alt="">
+
+      <h3><a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h3>
+
+      <p>oxid-cat2attr is a simple PHP class that depends on OXID eSales.</p>
+
+      <p>Simply copy all of 'copy_this' to a folder of your choise. My recommendation is the 'service' folder in the root directory.</p>
+
+      <h3><a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use?</h3>
+      
+      <p>Require the whole class:</p>
+
+      <pre>
+        <code class="php">
+require_once('inc/cat2attr.class.php');
+        </code>
+      </pre>
+
+      <p>Instantiate a new object of the class:</p>
+
+      <pre>
+        <code class="php">
+$oCat2attr = new cat2attr(array(
+'BOOTSTRAP_PATH' => '../../bootstrap.php'
+));
+        </code>
+      </pre>
+
+      <p>Following options are available in the settings array of the constructor:</p>
+
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Required</th>
+        </tr>
+
+        <tr>
+          <td>BOOTSTRAP_PATH</td>
+          <td>Path to your bootstrap.php in the root folder of your OXID eSales installation.</td>
+          <td>String</td>
+          <td>''</td>
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td>SEPERATOR</td>
+          <td>Seperator that will be used to split the collected category names.</td>
+          <td>String</td>
+          <td>', '</td>
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td>GIVEN_TOKEN</td>
+          <td>If you want to verify the access to the class by a token, you can parse it here.</td>
+          <td>String</td>
+          <td>''</td>
+          <td>No</td>
+         </tr>
+
+        <tr>
+          <td>ACCESS_TOKEN</td>
+          <td>If you want to verify the access to the class by a token, parse the default token here.</td>
+          <td>String</td>
+          <td>false</td>
+          <td>No</td>
+        </tr>
+      </table>
+
+      <p>To start the whole process:</p>
+
+      <pre>
+        <code class="php">
+$cat2attr->insert(array(
+'CAT_ID' => 'ad0234829205b9033196ba818f7a872b',
+'ATTR_ID' => '098f6bcd4621d373cade4e832627b4f6',
+'LOG' => TRUE,
+'CLEAN_DB' => TRUE,
+'SEARCH_MODE' => 1
+));
+        </code>
+      </pre>
+
+      <p>Following options are available in the settings array of the function:</p>
+
+      <table>
+        <tr>
+          <th>CAT_ID</th>
+          <th>The category OXID that will be searched.</th>
+          <th>String</th>
+          <th>''</th>
+          <th>Yes</th>
+        </tr>
+
+        <tr>
+          <td>ATTR_ID</td>
+          <td>The attribute OXID that will be filled with all the category names of 'CAT_ID'.</td>
+          <td>String</td>
+          <td>''</td>
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td>LOG</td>
+          <td>If true each article will be saved in a csv file.</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td>CLEAN_DB</td>
+          <td>If true all filled attributes with OXID 'ATTR_ID' will be dumped before insertation.</td>
+          <td>Boolean</td>
+          <td>true</td>
+          <td>No</td>
+         </tr>
+
+        <tr>
+          <td>SEARCH_MODE</td>
+          <td>If 0 the search query will only search for direct child categorys of 'CAT_ID'. If 1 the search query will search for the deepest child available. If 2 the search query will simply select all childs and childs of the childs and so on.</td>
+          <td>Integer</td>
+          <td>0</td>
+          <td>Yes</td>
+        </tr>
+      </table>
+
+      <p>To get a response:</p>
+
+      <pre>
+        <code class="php">
+echo $cat2attr->getResponse();
+        </code>
+      </pre>
+
+      <p>This will give you a JSON encoded message with following format:</p>
+
+      <pre>
+        <code class="json">
+{"success":false,"request_tokens":[],"changed_articles":[],"validation_errors":[],"system_errors":[]}
+        </code>
+      </pre>
+
+      <p>A successful response looks like this:</p>
+
+      <pre>
+        <code class="json">
+{"success":true,"request_tokens":["2eedc3c0d71a34d77e78e4d5a298f161"],"changed_articles":{"2eedc3c0d71a34d77e78e4d5a298f161":1105},"validation_errors":[],"system_errors":[]}
+        </code>
+      </pre>
+
+      <p>'success' should be self explanatory. If any errors occur, they will be stored in 'validation_errors' or 'system_errors'. 'request_token' is very smart. On every insert call, a unique md5 hash will be stored as reference. You can also see the changed articles of the request.</p>
+
+      <h3><a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API</h3>
+
+      <p>The project comes with a build in API. It is located in the index file of the root directory. There are two modes. Visual confirmation and instant process.</p>
+
+      <p>The API can be customized by following GET params:</p>
+
+      <table>
+        <tr>
+          <th>catId</th>
+          <th>The category OXID that will be searched.</th>
+          <th>String</th>
+          <th>false</th>
+          <th>Yes</th>
+        </tr>
+
+        <tr>
+          <td>attrId</td>
+          <td>The attribute OXID that will be filled with all the category names of 'catId '.</td>
+          <td>String</td>
+          <td>false</td>
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td>confirm</td>
+          <td>If true, a table will be displayed will all articles and categorys without actually inserting them. So you have the abilty to confirm it. If false, it will be inserted instantly.</td>
+          <td>Boolean</td>
+          <td>false</td>
+          <td>No</td>
+        </tr>
+
+        <tr>
+          <td>log</td>
+          <td>If true, the request and all changed articles will be logged in a csv file.</td>
+          <td>Boolean</td>
+          <td>true</td>
+          <td>Yes</td>
+        </tr>
+
+        <tr>
+          <td>token</td>
+          <td>If you want to verify the access to the class by a token, parse the default here.</td>
+          <td>String</td>
+          <td>false</td>
+          <td>No</td>
+         </tr>
+
+        <tr>
+          <td>cleanDb</td>
+          <td>If true all filled attributes with OXID 'ATTR_ID' will be dumped before insertion.</td>
+          <td>Boolean</td>
+          <td>true</td>
+          <td>No</td>
+        </tr>
+
+        <tr>
+          <td>searchMode</td>
+          <td>If 0 the search query will only search for direct child categorys of 'CAT_ID'. If 1 the search query will search for the deepest child available. If 2 the search query will simply select all childs and childs of the childs and so on.</td>
+          <td>Integer</td>
+          <td>0</td>
+          <td>No</td>
+        </tr>
+      </table>
+
+      <h3><a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Class Documentation</h3>
+
+      <img src="images/class.jpg" alt="">
+
+      <h3>
+      <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h3>
+
+      <p>Distributed under the MIT license.</p>
+
+      <h3>
+      <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact me</h3>
+
+      <p>Feel free to contact me on Twitter <a href="https://twitter.com/beno182">@beno182</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/ben182/oxid-cat2attr">oxid-cat2attr</a> is maintained by <a href="https://github.com/ben182">ben182</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+    <script src="javascripts/jquery-1.12.4.min.js"></script>
+    <script src="dist/elementMove.min.js"></script>
+    <script src="javascripts/highlight.pack.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+      
+    </script>
+  </body>
+</html>
