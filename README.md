@@ -66,7 +66,7 @@ Following options are available in the settings array of the function:
 | `CAT_ID` | The category OXID that will be searched. | String | '' | Yes |
 | `ATTR_ID` | The attribute OXID that will be filled with all the category names of 'CAT_ID'. | String | '' | Yes |
 | `LOG` | If true each article will be saved in a csv file. | boolean | true | Yes |
-| `CLEAN_DB` | If true all filled attributes with OXID 'ATTR_ID' will be dumped before insertation. | Boolean | true | No |
+| `CLEAN_DB` | If true all filled attributes with OXID 'ATTR_ID' will be dumped before insertion. | Boolean | true | No |
 | `SEARCH_MODE` | If 0 the search query will only search for direct child categorys of 'CAT_ID'. If 1 the search query will search for the deepest child available. If 2 the search query will simply select all childs and childs of the childs and so on. | Integer | 0 | Yes |
 
 To get a response:
