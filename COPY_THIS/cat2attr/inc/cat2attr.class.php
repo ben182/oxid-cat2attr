@@ -262,34 +262,34 @@ class cat2attr {
 		return FALSE;
 	}
 
-	private function getDeepCats($sCatId, $db_structure = NULL) {
+	private function getDeepCats($sCatId, $aDb_structure = NULL) {
 
 		foreach ($this->getChildCats($sCatId) as $sChildCat) {
 
 			if ($this->isLastCat($sChildCat) === TRUE) { //has no childs
 
-				$db_structure[] = $sChildCat;
+				$aDb_structure[] = $sChildCat;
 			}else{ //has childs
 
-				$db_structure = $this->getDeepCats($sChildCat, $db_structure);
+				$aDb_structure = $this->getDeepCats($sChildCat, $aDb_structure);
 			}
 
 		}
 
-		return $db_structure;
+		return $aDb_structure;
 	}
 
-	private function getAllCats($sCatId, $db_structure = NULL) {
+	private function getAllCats($sCatId, $aDb_structure = NULL) {
 
 		foreach ($this->getChildCats($sCatId) as $sChildCat) {
 			
-			$db_structure[] = $sChildCat;
+			$aDb_structure[] = $sChildCat;
 
-			$db_structure = $this->getAllCats($sChildCat, $db_structure);
+			$aDb_structure = $this->getAllCats($sChildCat, $aDb_structure);
 
 		}
 
-		return $db_structure;
+		return $aDb_structure;
 	}
 
 	public function prepareAllArticlesAndCats($sCatId, $iSearchMode = NULL) {
